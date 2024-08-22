@@ -76,9 +76,9 @@ export const actions = {
         ]
     };
     console.log(options)
-    const payResponse = await neucron.pay.txSpend(options)
-    console.log(payResponse)
+     const payResponse = await neucron.pay.txSpend(options)
+     console.log(payResponse)
 
-    return { success: true, payment: payResponse.data.txid };
+     return { success: true, payment: payResponse.data.txid };
     }
 };
