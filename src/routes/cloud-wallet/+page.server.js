@@ -1,4 +1,4 @@
-import NeucronSDK from "neucron-sdk";
+import NeucronSDK from "../../neucron-sdk/dist/neucron-sdk";
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -7,10 +7,10 @@ export const actions = {
 	    const data = await request.formData();
         
 
-    const neucron = new NeucronSDK();
+    const neucronSDK = new NeucronSDK();
 
-    const authModule = neucron.authentication;
-    const walletModule = neucron.wallet;
+    const authModule = neucronSDK.authentication;
+    const walletModule = neucronSDK.wallet;
 
 // const signUpResponse = await authModule.signUp({ email: "sales@timechainlabs.io", password: "string" });
 // console.log(signUpResponse);
@@ -57,10 +57,10 @@ export const actions = {
     pay: async ({request}) => {
 	    const data = await request.formData();
         
-    const neucron = new NeucronSDK();
+    const neucronSDK = new NeucronSDK();
 
-    const authModule = neucron.authentication;
-    const walletModule = neucron.wallet;
+    const authModule = neucronSDK.authentication;
+    const walletModule = neucronSDK.wallet;
 
     const loginResponse = await authModule.login({ email: data.get('email'), password: data.get('password') });
     console.log(loginResponse);
@@ -76,9 +76,9 @@ export const actions = {
         ]
     };
     console.log(options)
-     const payResponse = await neucron.pay.txSpend(options)
-     console.log(payResponse)
+    const payResponse = await neucronSDK.pay.txSend(options);
+    console.log(payResponse)
 
-     return { success: true, payment: payResponse.data.txid };
+    return { success: true, payment: payResponse.data.txid };
     }
 };
